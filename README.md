@@ -1,42 +1,54 @@
-```markdown
-# İmsakiye
+# 🌙 İmsakiye 2026 - Türkiye İl & İlçe Namaz Vakitleri
 
-Türkiye’deki tüm illere ait yıllık imsakiye verilerini JSON formatında barındıran açık kaynak repo.  
-Veriler GitHub Pages üzerinden servis edilerek kolay erişim ve entegrasyon imkânı sağlar.
+Türkiye'deki 81 il ve tüm ilçelere ait 2026 yılı namaz vakitlerini (imsak, güneş, öğle, ikindi, akşam, yatsı) barındıran açık kaynaklı bir projedir. Veriler JSON formatında sunulmakta olup, GitHub Pages üzerinden doğrudan API olarak kullanılabilir.
 
-## 🔗 Kullanım
+## 🚀 Canlı Önizleme
 
-Her ilin verisine doğrudan erişebilirsiniz:
+Projeyi tarayıcı üzerinden görüntülemek için:
+[https://recepuncu.github.io/imsakiye/](https://recepuncu.github.io/imsakiye/)
 
-- Adana: [https://recepuncu.github.io/imsakiye/2026/adana.json](https://recepuncu.github.io/imsakiye/2026/adana.json)  
-- İzmir: [https://recepuncu.github.io/imsakiye/2026/izmir.json](https://recepuncu.github.io/imsakiye/2026/izmir.json)  
+## 🔗 JSON API Kullanımı
 
-## 📂 Yapı
+Herhangi bir uygulama veya web sitesinden verileri çekmek için aşağıdaki URL yapısını kullanabilirsiniz:
 
-```
-imsakiye/
-├── adana.json
-├── izmir.json
-├── ankara.json
-└── ...
-```
+**URL Yapısı:**
+`https://recepuncu.github.io/imsakiye/2026/data/{il}-{ilce}.json`
 
-## 📅 Yıllık Veriler
+**Örnekler:**
+- **İstanbul:** [https://recepuncu.github.io/imsakiye/2026/data/istanbul-istanbul.json](https://recepuncu.github.io/imsakiye/2026/data/istanbul-istanbul.json)
+- **Ankara (Çankaya):** [https://recepuncu.github.io/imsakiye/2026/data/ankara-ankara.json](https://recepuncu.github.io/imsakiye/2026/data/ankara-ankara.json)
+- **İzmir (Çeşme):** [https://recepuncu.github.io/imsakiye/2026/data/izmir-cesme.json](https://recepuncu.github.io/imsakiye/2026/data/izmir-cesme.json)
 
-Her yıl için ayrı klasör kullanılabilir:
+## 📂 Proje Yapısı
 
-```
+```text
 imsakiye/
 ├── 2026/
-│   ├── adana.json
-│   ├── izmir.json
-│   └── ...
-├── 2027/
-│   └── ...
+│   └── data/
+│       ├── adana-adana.json
+│       ├── istanbul-besiktas.json
+│       └── ... (869 ilçe dosyası)
+├── index.html      # Kullanıcı arayüzü
+├── imsakiye-cover.png
+└── README.md
 ```
 
-## ⚙️ Katkı
+## 🛠️ Teknik Özellikler
 
-- Yeni yıl verilerini eklemek için ilgili klasöre JSON dosyalarını yükleyin.  
-- Pull request açarak katkıda bulunabilirsiniz.
-```
+- **Frontend:** Vanilla JS, HTML5, CSS3.
+- **Veri Kaynağı:** Yerel JSON dosyaları.
+- **Dil Desteği:** Türkçe (Özel karakter desteği ve doğru büyük harf dönüşümü dahil).
+- **Responsive Tasarım:** Mobil, tablet ve masaüstü uyumlu.
+
+## ⚙️ Katkıda Bulunma
+
+1. Bu depoyu forklayın.
+2. Yeni bir branch oluşturun (`git checkout -b yeniozellik/Ozellik`).
+3. Değişikliklerinizi yapın ve kaydedin.
+4. Değişikliklerinizi gönderin (`git commit -m 'Yeni özellik eklendi'`).
+5. Branchinize push yapın (`git push origin yeniozellik/Ozellik`).
+6. Bir Pull Request açın.
+
+## 📄 Lisans
+
+Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır.
