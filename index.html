@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>İmsakiye 2026 - Türkiye İlleri Namaz Vakitleri</title>  
+  <meta name="description" content="İmsakiye 2026: Türkiye'deki tüm illere ait günlük imsak, güneş, öğle, ikindi, akşam ve yatsı namaz vakitleri. JSON formatında veriler GitHub Pages üzerinden erişilebilir.">  
+  <meta name="keywords" content="imsakiye 2026, namaz vakitleri, Türkiye imsakiye, iftar vakti, sahur vakti, Adana imsakiye, İzmir imsakiye, Ramazan 2026">
+  <meta name="author" content="Recep">
+  <meta property="og:title" content="İmsakiye 2026 - Türkiye İlleri Namaz Vakitleri">
+  <meta property="og:description" content="Türkiye'deki tüm illere ait 2026 imsakiye verileri. Günlük imsak ve iftar vakitlerini kolayca öğrenin.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kullaniciadi.github.io/imsakiye/">
+  <meta property="og:image" content="https://kullaniciadi.github.io/imsakiye/imsakiye-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="İmsakiye 2026 - Türkiye İlleri Namaz Vakitleri">
+  <meta name="twitter:description" content="Türkiye'deki tüm illere ait 2026 imsakiye verileri. Günlük imsak ve iftar vakitlerini kolayca öğrenin.">
+  <meta name="twitter:image" content="https://kullaniciadi.github.io/imsakiye/imsakiye-cover.png"> 
+  <meta http-equiv="Content-Language" content="tr">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    select, button {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-right: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.6rem;
+      text-align: center;
+    }
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      th {
+        position: sticky;
+        top: 0;
+      }
+      td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+      }
+      td::before {
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 0.5rem;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+      td:nth-of-type(1)::before { content: "Tarih"; }
+      td:nth-of-type(2)::before { content: "İmsak"; }
+      td:nth-of-type(3)::before { content: "Güneş"; }
+      td:nth-of-type(4)::before { content: "Öğle"; }
+      td:nth-of-type(5)::before { content: "İkindi"; }
+      td:nth-of-type(6)::before { content: "Akşam"; }
+      td:nth-of-type(7)::before { content: "Yatsı"; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>İmsakiye 2026</h1>
+    <p>Şehir seçerek imsakiye verilerini görüntüleyin</p>
+  </header>
+  <main>
+    <label for="city">Şehir:</label>
+    <select id="city">
+      <option value="adana">Adana</option>
+      <!-- Diğer şehirler buraya eklenebilir -->
+    </select>
+    <button onclick="loadData()">Göster</button>
+    <div id="output"></div>
+  </main>
+
+  <script>
+    async function loadData() {
+      const city = document.getElementById('city').value;
+      const output = document.getElementById('output');
+      output.innerHTML = "<p>Yükleniyor...</p>";
+      try {
+        const response = await fetch(city + ".json");
+        const data = await response.json();
+        const vakitler = data.namaz_vakitleri;
+        let html = "<table><thead><tr><th>Tarih</th><th>İmsak</th><th>Güneş</th><th>Öğle</th><th>İkindi</th><th>Akşam</th><th>Yatsı</th></tr></thead><tbody>";
+        vakitler.forEach(v => {
+          html += `<tr>
+            <td>${v.tarih}</td>
+            <td>${v.imsak}</td>
+            <td>${v.gunes}</td>
+            <td>${v.ogle}</td>
+            <td>${v.ikindi}</td>
+            <td>${v.aksam}</td>
+            <td>${v.yatsi}</td>
+          </tr>`;
+        });
+        html += "</tbody></table>";
+        output.innerHTML = html;
+      } catch (err) {
+        output.innerHTML = "<p>Veri yüklenemedi.</p>";
+      }
+    }
+  </script>
+</body>
+</html>
