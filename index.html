@@ -10,12 +10,12 @@
   <meta property="og:title" content="İmsakiye 2026 - Türkiye İlleri Namaz Vakitleri">
   <meta property="og:description" content="Türkiye'deki tüm illere ait 2026 imsakiye verileri. Günlük imsak ve iftar vakitlerini kolayca öğrenin.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kullaniciadi.github.io/imsakiye/">
-  <meta property="og:image" content="https://kullaniciadi.github.io/imsakiye/imsakiye-cover.png">
+  <meta property="og:url" content="https://recepuncu.github.io/imsakiye/">
+  <meta property="og:image" content="https://recepuncu.github.io/imsakiye/imsakiye-cover.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="İmsakiye 2026 - Türkiye İlleri Namaz Vakitleri">
   <meta name="twitter:description" content="Türkiye'deki tüm illere ait 2026 imsakiye verileri. Günlük imsak ve iftar vakitlerini kolayca öğrenin.">
-  <meta name="twitter:image" content="https://kullaniciadi.github.io/imsakiye/imsakiye-cover.png"> 
+  <meta name="twitter:image" content="https://recepuncu.github.io/imsakiye/imsakiye-cover.png"> 
   <meta http-equiv="Content-Language" content="tr">
   <style>
     body {
@@ -111,7 +111,7 @@
       const output = document.getElementById('output');
       output.innerHTML = "<p>Yükleniyor...</p>";
       try {
-        const response = await fetch(city + ".json");
+        const response = await fetch("2026/data/" + city + ".json");
         const data = await response.json();
         const vakitler = data.namaz_vakitleri;
         let html = "<table><thead><tr><th>Tarih</th><th>İmsak</th><th>Güneş</th><th>Öğle</th><th>İkindi</th><th>Akşam</th><th>Yatsı</th></tr></thead><tbody>";
