@@ -3,18 +3,18 @@
 <head>  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>İmsakiye 2026 - Türkiye İlleri Namaz Vakitleri</title>  
-  <meta name="description" content="İmsakiye 2026: Türkiye'deki tüm illere ait günlük imsak, güneş, öğle, ikindi, akşam ve yatsı namaz vakitleri. JSON formatında veriler GitHub Pages üzerinden erişilebilir.">  
-  <meta name="keywords" content="imsakiye 2026, namaz vakitleri, Türkiye imsakiye, iftar vakti, sahur vakti, Adana imsakiye, İzmir imsakiye, Ramazan 2026">
+  <title>İmsakiye 2026 - Türkiye İl/İlçe Namaz Vakitleri</title>  
+  <meta name="description" content="İmsakiye 2026: Türkiye'deki tüm il ve ilçelere ait günlük imsak, güneş, öğle, ikindi, akşam ve yatsı namaz vakitleri. JSON formatında veriler GitHub Pages üzerinden erişilebilir.">  
+  <meta name="keywords" content="imsakiye 2026, namaz vakitleri, Türkiye imsakiye, iftar vakti, sahur vakti, Adana imsakiye, İzmir imsakiye, Ramazan 2026, ilçe imsakiye">
   <meta name="author" content="Recep">
-  <meta property="og:title" content="İmsakiye 2026 - Türkiye İlleri Namaz Vakitleri">
-  <meta property="og:description" content="Türkiye'deki tüm illere ait 2026 imsakiye verileri. Günlük imsak ve iftar vakitlerini kolayca öğrenin.">
+  <meta property="og:title" content="İmsakiye 2026 - Türkiye İl/İlçe Namaz Vakitleri">
+  <meta property="og:description" content="Türkiye'deki tüm il ve ilçelere ait 2026 imsakiye verileri. Günlük imsak ve iftar vakitlerini kolayca öğrenin.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://recepuncu.github.io/imsakiye/">
   <meta property="og:image" content="https://recepuncu.github.io/imsakiye/imsakiye-cover.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="İmsakiye 2026 - Türkiye İlleri Namaz Vakitleri">
-  <meta name="twitter:description" content="Türkiye'deki tüm illere ait 2026 imsakiye verileri. Günlük imsak ve iftar vakitlerini kolayca öğrenin.">
+  <meta name="twitter:title" content="İmsakiye 2026 - Türkiye İl/İlçe Namaz Vakitleri">
+  <meta name="twitter:description" content="Türkiye'deki tüm il ve ilçelere ait 2026 imsakiye verileri. Günlük imsak ve iftar vakitlerini kolayca öğrenin.">
   <meta name="twitter:image" content="https://recepuncu.github.io/imsakiye/imsakiye-cover.png"> 
   <meta http-equiv="Content-Language" content="tr">
   <style>
@@ -93,25 +93,223 @@
 <body>
   <header>
     <h1>İmsakiye 2026</h1>
-    <p>Şehir seçerek imsakiye verilerini görüntüleyin</p>
+    <p>İl ve ilçe seçerek imsakiye verilerini görüntüleyin</p>
   </header>
   <main>
-    <label for="city">Şehir:</label>
-    <select id="city">
+    <label for="city">İl:</label>
+    <select id="city" onchange="updateDistricts()">
+      <option value="">Seçiniz</option>
       <option value="adana">Adana</option>
-      <!-- Diğer şehirler buraya eklenebilir -->
+      <option value="adiyaman">Adiyaman</option>
+      <option value="afyonkarahisar">Afyonkarahisar</option>
+      <option value="agri">Agri</option>
+      <option value="aksaray">Aksaray</option>
+      <option value="amasya">Amasya</option>
+      <option value="ankara">Ankara</option>
+      <option value="antalya">Antalya</option>
+      <option value="ardahan">Ardahan</option>
+      <option value="artvin">Artvin</option>
+      <option value="aydin">Aydin</option>
+      <option value="balikesir">Balikesir</option>
+      <option value="bartin">Bartin</option>
+      <option value="batman">Batman</option>
+      <option value="bayburt">Bayburt</option>
+      <option value="bilecik">Bilecik</option>
+      <option value="bingol">Bingol</option>
+      <option value="bitlis">Bitlis</option>
+      <option value="bolu">Bolu</option>
+      <option value="burdur">Burdur</option>
+      <option value="bursa">Bursa</option>
+      <option value="canakkale">Canakkale</option>
+      <option value="cankiri">Cankiri</option>
+      <option value="corum">Corum</option>
+      <option value="denizli">Denizli</option>
+      <option value="diyarbakir">Diyarbakir</option>
+      <option value="duzce">Duzce</option>
+      <option value="edirne">Edirne</option>
+      <option value="elazig">Elazig</option>
+      <option value="erzincan">Erzincan</option>
+      <option value="erzurum">Erzurum</option>
+      <option value="eskisehir">Eskisehir</option>
+      <option value="gaziantep">Gaziantep</option>
+      <option value="giresun">Giresun</option>
+      <option value="gumushane">Gumushane</option>
+      <option value="hakkari">Hakkari</option>
+      <option value="hatay">Hatay</option>
+      <option value="igdir">Igdir</option>
+      <option value="isparta">Isparta</option>
+      <option value="istanbul">Istanbul</option>
+      <option value="izmir">Izmir</option>
+      <option value="kahramanmaras">Kahramanmaras</option>
+      <option value="karabuk">Karabuk</option>
+      <option value="karaman">Karaman</option>
+      <option value="kars">Kars</option>
+      <option value="kastamonu">Kastamonu</option>
+      <option value="kayseri">Kayseri</option>
+      <option value="kilis">Kilis</option>
+      <option value="kirikkale">Kirikkale</option>
+      <option value="kirklareli">Kirklareli</option>
+      <option value="kirsehir">Kirsehir</option>
+      <option value="kocaeli">Kocaeli</option>
+      <option value="konya">Konya</option>
+      <option value="kutahya">Kutahya</option>
+      <option value="malatya">Malatya</option>
+      <option value="manisa">Manisa</option>
+      <option value="mardin">Mardin</option>
+      <option value="mersin">Mersin</option>
+      <option value="mugla">Mugla</option>
+      <option value="mus">Mus</option>
+      <option value="nevsehir">Nevsehir</option>
+      <option value="nigde">Nigde</option>
+      <option value="ordu">Ordu</option>
+      <option value="osmaniye">Osmaniye</option>
+      <option value="rize">Rize</option>
+      <option value="sakarya">Sakarya</option>
+      <option value="samsun">Samsun</option>
+      <option value="sanliurfa">Sanliurfa</option>
+      <option value="siirt">Siirt</option>
+      <option value="sinop">Sinop</option>
+      <option value="sirnak">Sirnak</option>
+      <option value="sivas">Sivas</option>
+      <option value="tekirdag">Tekirdag</option>
+      <option value="tokat">Tokat</option>
+      <option value="trabzon">Trabzon</option>
+      <option value="tunceli">Tunceli</option>
+      <option value="usak">Usak</option>
+      <option value="van">Van</option>
+      <option value="yalova">Yalova</option>
+      <option value="yozgat">Yozgat</option>
+      <option value="zonguldak">Zonguldak</option>
     </select>
+
+    <label for="district">İlçe:</label>
+    <select id="district">
+      <option value="">Önce il seçiniz</option>
+    </select>
+
     <button onclick="loadData()">Göster</button>
     <div id="output"></div>
   </main>
 
   <script>
+    // İl -> İlçe eşlemesi
+    const districts = {
+      adana: ["adana", "aladag", "ceyhan", "feke", "imamoglu", "karaisali", "karatas", "kozan", "pozanti", "saimbeyli", "tufanbeyli", "yumurtalik"],
+      adiyaman: ["adiyaman", "besni", "celikhan", "gerger", "golbasi", "kahta", "samsat", "sincik", "tut"],
+      afyonkarahisar: ["afyonkarahisar", "basmakci", "bayat", "bolvadin", "cay", "cobanlar", "dazkiri", "dinar", "emirdag", "evciler", "hocalar", "ihsaniye", "iscehisar", "kiziloren", "sandikli", "sinanpasa", "suhut", "sultandagi"],
+      agri: ["agri", "diyadin", "dogubeyazit", "eleskirt", "patnos", "taslicay", "tutak"],
+      aksaray: ["agacoren", "aksaray", "eskil", "gulagac", "guzelyurt", "ortakoy", "sariyahsi", "sultanhani"],
+      amasya: ["amasya", "goynucek", "gumushacikoy", "hamamozu", "merzifon", "suluova", "tasova"],
+      ankara: ["akyurt", "ankara", "ayas", "bala", "beypazari", "camlidere", "cubuk", "elmadag", "evren", "gudul", "haymana", "kahramankazan", "kalecik", "kizilcahamam", "nallihan", "polatli", "sereflikochisar"],
+      antalya: ["akseki", "aksu", "alanya", "antalya", "demre", "elmali", "finike", "gazipasa", "gundogmus", "ibradi", "kas", "kemer", "korkuteli", "kumluca", "manavgat", "serik"],
+      ardahan: ["ardahan", "cildir", "damal", "gole", "hanak", "posof"],
+      artvin: ["ardanuc", "arhavi", "artvin", "borcka", "hopa", "kemalpasa", "murgul", "savsat", "yusufeli"],
+      aydin: ["aydin", "bozdogan", "buharkent", "cine", "didim", "germencik", "incirliova", "karacasu", "karpuzlu", "kocarli", "kosk", "kusadasi", "kuyucak", "nazilli", "soke", "sultanhisar", "yenipazar (a)"],
+      balikesir: ["ayvalik", "balikesir", "balya", "bandirma", "bigadic", "burhaniye", "dursunbey", "edremit", "erdek", "gomec", "gonen", "havran", "ivrindi", "kepsut", "manyas", "marmara", "savastepe", "sindirgi", "susurluk"],
+      bartin: ["bartin", "kurucasile", "ulus"],
+      batman: ["batman", "besiri", "gercus", "hasankeyf", "kozluk", "sason"],
+      bayburt: ["aydintepe", "bayburt", "demirozu"],
+      bilecik: ["bilecik", "bozuyuk", "golpazari", "inhisar", "osmaneli", "pazaryeri", "sogut", "yenipazar"],
+      bingol: ["adakli", "bingol", "karliova", "kigi", "solhan", "yayladere", "yedisu"],
+      bitlis: ["adilcevaz", "ahlat", "bitlis", "guroymak", "hizan", "mutki", "tatvan"],
+      bolu: ["bolu", "dortdivan", "gerede", "goynuk", "kibriscik", "mengen", "mudurnu", "seben", "yenicaga"],
+      burdur: ["aglasun", "altinyayla", "bucak", "burdur", "cavdir", "celtikci", "golhisar", "karamanli", "kemer (b)", "tefenni", "yesilova"],
+      bursa: ["bursa", "buyuk orhan", "gemlik", "harmancik", "inegol", "iznik", "karacabey", "keles", "kestel", "mudanya", "mustafa kemalpasa", "orhaneli", "orhangazi", "yenisehir"],
+      canakkale: ["ayvacik", "bayramic", "biga", "bozcaada", "can", "canakkale", "ezine", "gelibolu", "gokceada", "lapseki", "yenice"],
+      cankiri: ["atkaracalar", "bayramoren", "cankiri", "cerkes", "ilgaz", "kizilirmak", "kursunlu", "orta", "sabanozu", "yaprakli"],
+      corum: ["alaca", "bayat", "bogazkale", "corum", "dodurga", "iskilip", "kargi", "lacin", "mecitozu", "oguzlar", "ortakoy", "osmancik", "sungurlu", "ugurludag"],
+      denizli: ["acipayam", "babadag", "baklan", "bekilli", "beyagac", "bozkurt", "buldan", "cal", "cameli", "cardak", "civril", "denizli", "guney", "honaz", "kale", "saraykoy", "serinhisar", "tavas"],
+      diyarbakir: ["bismil", "cermik", "cinar", "cungus", "dicle", "diyarbakir", "egil", "ergani", "hani", "hazro", "kocakoy", "kulp", "lice", "silvan"],
+      duzce: ["akcakoca", "cilimli", "cumayeri", "duzce", "golyaka", "gumusova", "kaynasli", "yigilca"],
+      edirne: ["edirne", "enez", "havsa", "ipsala", "kesan", "lalapasa", "meric", "suloglu", "uzunkopru"],
+      elazig: ["agin", "alacakaya", "aricak", "baskil", "elazig", "karakocan", "keban", "kovancilar", "maden", "palu", "sivrice"],
+      erzincan: ["cayirli", "erzincan", "ilic", "kemah", "kemaliye", "otlukbeli", "refahiye", "tercan", "uzumlu"],
+      erzurum: ["askale", "aziziye", "cat", "erzurum", "hinis", "horasan", "ispir", "karacoban", "karayazi", "koprukoy", "narman", "oltu", "olur", "pasinler", "pazaryolu", "senkaya", "tekman", "tortum", "uzundere"],
+      eskisehir: ["alpu", "beylikova", "cifteler", "eskisehir", "gunyuzu", "han", "inonu", "mahmudiye", "mihalgazi", "mihaliccik", "saricakaya", "seyitgazi", "sivrihisar"],
+      gaziantep: ["araban", "gaziantep", "islahiye", "karkamis", "nizip", "nurdagi", "oguzeli", "yavuzeli"],
+      giresun: ["alucra", "bulancak", "camoluk", "canakci", "dereli", "dogankent", "espiye", "eynesil", "giresun", "gorele", "guce", "kesap", "piraziz", "sebinkarahisar", "tirebolu", "yaglidere"],
+      gumushane: ["gumushane", "kelkit", "kose", "kurtun", "siran", "torul"],
+      hakkari: ["cukurca", "derecik", "hakkari", "semdinli", "yuksekova"],
+      hatay: ["altinozu", "arsuz", "belen", "dortyol", "erzin", "hassa", "hatay", "iskenderun", "kirikhan", "kumlu", "payas", "reyhanli", "samandag", "yayladagi"],
+      igdir: ["aralik", "igdir", "karakoyunlu", "tuzluca"],
+      isparta: ["aksu (i)", "atabey", "egirdir", "gelendost", "gonen", "isparta", "keciborlu", "sarki karaagac", "senirkent", "sutculer", "uluborlu", "yalvac", "yenisar bademli"],
+      istanbul: ["arnavutkoy", "avcilar", "basaksehir", "beylikduzu", "buyukcekmece", "catalca", "cekmekoy", "esenyurt", "istanbul", "kartal", "kucukcekmece", "maltepe", "pendik", "sancaktepe", "sile", "silivri", "sultanbeyli", "sultangazi", "tuzla"],
+      izmir: ["aliaga", "bayindir", "bergama", "beydag", "cesme", "dikili", "foca", "guzelbahce", "izmir", "karaburun", "kemalpasa", "kinik", "kiraz", "menderes", "menemen", "odemis", "seferihisar", "selcuk", "tire", "torbali", "urla"],
+      kahramanmaras: ["afsin", "andirin", "caglayancerit", "ekinozu", "elbistan", "goksun", "kahramanmaras", "nurhak", "pazarcik", "turkoglu"],
+      karabuk: ["eflani", "eskipazar", "karabuk", "ovacik (k)", "yenice (k)"],
+      karaman: ["ayranci", "basyayla", "ermenek", "karaman", "kazimkarabekir", "sariveliler"],
+      kars: ["akyaka", "arpacay", "digor", "kagizman", "kars", "sarikamis", "selim", "susuz"],
+      kastamonu: ["abana", "agli", "arac", "azdavay", "bozkurt (k)", "catalzeytin", "cide", "daday", "devrekani", "doganyurt", "hanonu", "ihsangazi", "inebolu", "kastamonu", "kure", "pinarbasi (k)", "senpazar", "seydiler", "taskopru", "tosya"],
+      kayseri: ["akkisla", "bunyan", "develi", "felahiye", "incesu", "kayseri", "ozvatan", "pinarbasi", "sarioglan", "sariz", "tomarza", "yahyali", "yesilhisar"],
+      kilis: ["elbeyli", "kilis", "musabeyli", "polateli"],
+      kirikkale: ["baliseyh", "celebi", "delice", "karakecili", "keskin", "kirikkale", "sulakyurt"],
+      kirklareli: ["babaeski", "demirkoy", "kirklareli", "luleburgaz", "pehlivankoy", "pinarhisar", "vize"],
+      kirsehir: ["akcakent", "akpinar", "cicekdagi", "kaman", "kirsehir", "mucur"],
+      kocaeli: ["cayirova", "darica", "dilovasi", "gebze", "kandira", "karamursel", "kartepe", "kocaeli", "korfez"],
+      konya: ["ahirli", "akoren", "aksehir", "altinekin", "beysehir", "bozkir", "celtik", "cihanbeyli", "cumra", "derbent", "derebucak", "doganhisar", "emirgazi", "eregli", "guneysinir", "hadim", "halkapinar", "huyuk", "ilgin", "kadinhani", "karapinar", "karatay", "konya", "kulu", "meram", "sarayonu", "selcuklu", "seydisehir", "taskent", "tuzlukcu", "yalihuyuk", "yunak"],
+      kutahya: ["altintas", "aslanapa", "cavdarhisar", "domanic", "dumlupinar", "emet", "gediz", "hisarcik", "kutahya", "pazarlar", "saphane", "simav", "tavsanli"],
+      malatya: ["akcadag", "arapgir", "arguvan", "darende", "dogansehir", "doganyol", "hekimhan", "kale (m)", "kuluncak", "malatya", "puturge", "yazihan", "yesilyurt"],
+      manisa: ["ahmetli", "akhisar", "alasehir", "demirci", "golmarmara", "gordes", "kirkagac", "koprubasi", "kula", "manisa", "salihli", "sarigol", "saruhanli", "selendi", "soma", "turgutlu"],
+      mardin: ["dargecit", "derik", "kiziltepe", "mardin", "mazidagi", "midyat", "nusaybin", "omerli", "savur"],
+      mersin: ["anamur", "aydincik", "bozyazi", "camliyayla", "erdemli", "gulnar", "mersin", "mut", "silifke", "tarsus"],
+      mugla: ["bodrum", "dalaman", "datca", "fethiye", "koycegiz", "marmaris", "milas", "mugla", "ortaca", "seydikemer", "ula", "yatagan"],
+      mus: ["bulanik", "haskoy", "korkut", "malazgirt", "mus", "varto"],
+      nevsehir: ["acigol", "avanos", "hacibektas", "kozakli", "nevsehir", "urgup"],
+      nigde: ["altunhisar", "bor", "camardi", "ciftlik", "nigde", "ulukisla"],
+      ordu: ["akkus", "aybasti", "camas", "catalpinar", "caybasi", "fatsa", "golkoy", "gulyali", "gurgentepe", "ikizce", "kabatas", "korgan", "kumru", "mesudiye", "ordu", "unye"],
+      osmaniye: ["bahce", "duzici", "hasanbeyli", "kadirli", "osmaniye", "sumbas", "toprakkale"],
+      rize: ["ardesen", "camlihemsin", "cayeli", "findikli", "hemsin", "ikizdere", "iyidere", "pazar", "rize"],
+      sakarya: ["akyazi", "geyve", "hendek", "karasu", "kaynarca", "kocaali", "pamukova", "sakarya", "tarakli"],
+      samsun: ["19 mayis", "alacam", "asarcik", "atakum", "ayvacik (s)", "bafra", "carsamba", "havza", "kavak", "ladik", "salipazari", "samsun", "tekkekoy", "terme", "vezirkopru", "yakakent"],
+      sanliurfa: ["akcakale", "birecik", "bozova", "ceylanpinar", "halfeti", "harran", "hilvan", "sanliurfa", "siverek", "suruc", "viransehir"],
+      siirt: ["baykan", "eruh", "kurtalan", "pervari", "siirt", "sirvan"],
+      sinop: ["ayancik", "boyabat", "dikmen", "duragan", "erfelek", "gerze", "sarayduzu", "sinop", "turkeli"],
+      sirnak: ["beytussebap", "cizre", "guclukonak", "idil", "silopi", "sirnak", "uludere"],
+      sivas: ["akincilar", "altinyayla(s)", "divrigi", "dogansar", "gemerek", "golova", "gurun", "hafik", "imranli", "kangal", "koyulhisar", "sarkisla", "sivas", "susehri", "ulas", "yildizeli", "zara"],
+      tekirdag: ["cerkezkoy", "corlu", "ergene", "hayrabolu", "kapakli", "m.ereglisi", "malkara", "saray", "sarkoy", "tekirdag"],
+      tokat: ["almus", "artova", "basciftlik", "erbaa", "niksar", "pazar (t)", "resadiye", "sulusaray", "tokat", "turhal", "yesilyurt", "zile"],
+      trabzon: ["akcaabat", "arakli", "arsin", "besikduzu", "carsibasi", "caykara", "dernekpazari", "duzkoy", "hayrat", "koprubasi (t)", "of", "salpazari", "surmene", "tonya", "trabzon", "vakfikebir", "yomra"],
+      tunceli: ["cemisgezek", "hozat", "nazimiye", "ovacik", "pertek", "pulumur", "tunceli"],
+      usak: ["banaz", "esme", "karahalli", "sivasli", "ulubey", "usak"],
+      van: ["bahcesaray", "baskale", "caldiran", "catak", "edremit (v)", "ercis", "gevas", "gurpinar", "muradiye", "ozalp", "saray (v)", "van"],
+      yalova: ["altinova", "armutlu", "cinarcik", "termal", "yalova"],
+      yozgat: ["akdagmadeni", "aydincik (y)", "bogazliyan", "candir", "cayiralan", "cekerek", "kadisehri", "saraykent", "sarikaya", "sefaatli", "sorgun", "yenifakili", "yerkoy", "yozgat"],
+      zonguldak: ["alapli", "caycuma", "devrek", "gokcebey", "karadeniz eregli", "zonguldak"],
+    };
+
+    function updateDistricts() {
+      const city = document.getElementById("city").value;
+      const districtSelect = document.getElementById("district");
+      districtSelect.innerHTML = "";
+
+      if (city && districts[city]) {
+        districts[city].forEach(d => {
+          const opt = document.createElement("option");
+          opt.value = d;
+          opt.textContent = d.charAt(0).toUpperCase() + d.slice(1);
+          districtSelect.appendChild(opt);
+        });
+      } else {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "Önce il seçiniz";
+        districtSelect.appendChild(opt);
+      }
+    }
+
     async function loadData() {
       const city = document.getElementById('city').value;
+      const district = document.getElementById('district').value;
       const output = document.getElementById('output');
+
+      if (!city || !district) {
+        output.innerHTML = "<p>Lütfen il ve ilçe seçiniz.</p>";
+        return;
+      }
+
       output.innerHTML = "<p>Yükleniyor...</p>";
       try {
-        const response = await fetch("2026/data/" + city + ".json");
+        const response = await fetch(`2026/data/${city}-${district}.json`);
         const data = await response.json();
         const vakitler = data.namaz_vakitleri;
         let html = "<table><thead><tr><th>Tarih</th><th>İmsak</th><th>Güneş</th><th>Öğle</th><th>İkindi</th><th>Akşam</th><th>Yatsı</th></tr></thead><tbody>";
