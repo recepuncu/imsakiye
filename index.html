@@ -74,6 +74,28 @@
       color: white;
     }
 
+    .faq-section {
+      margin-top: 3rem;
+      border-top: 1px solid #eee;
+      padding-top: 2rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-item h4 {
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+      font-size: 1.1rem;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: #555;
+      line-height: 1.6;
+    }
+
     @media (max-width: 600px) {
 
       table,
@@ -252,6 +274,43 @@
         <a href="?city=kocaeli&district=kocaeli">Kocaeli İmsakiye</a>
       </div>
     </section>
+
+    <section id="faq" class="faq-section">
+      <h3>Sıkça Sorulan Sorular</h3>
+      <div class="faq-container">
+        <div class="faq-item">
+          <h4 id="faq-q1">2026 yılında İstanbul’da Ramazan ne zaman başlıyor?</h4>
+          <p id="faq-a1">2026 yılında İstanbul’da Ramazan ayının Perşembe, 19 Şubat 2026 tarihinde başlaması
+            beklenmektedir. Kesin tarih, hilalin görülmesine göre resmi olarak açıklanacaktır.</p>
+        </div>
+        <div class="faq-item">
+          <h4 id="faq-q2">2026 yılında İstanbul’da ilk oruç günü ne zaman?</h4>
+          <p id="faq-a2">İstanbul için 2026 Ramazan ayının ilk oruç gününün Perşembe, 19 Şubat 2026 tarihinde olması
+            öngörülmektedir.</p>
+        </div>
+        <div class="faq-item">
+          <h4 id="faq-q3">2026 Ramazan ayında İstanbul’da sahur saati kaçta?</h4>
+          <p id="faq-a3">İstanbul’de sahur saatleri Ramazan boyunca her gün değişmektedir ve imsak vaktine göre
+            belirlenir.
+            Günlük sahur saatleri Ramazan imsakiyesinde yer almaktadır.</p>
+        </div>
+        <div class="faq-item">
+          <h4 id="faq-q4">2026 Ramazan ayında İstanbul’da iftar saati kaçta?</h4>
+          <p id="faq-a4">İftar saati İstanbul’da güneşin batışına göre belirlenir ve Ramazan ayı boyunca günlük olarak
+            değişir. Güncel iftar saatleri imsakiyede gösterilmektedir.</p>
+        </div>
+        <div class="faq-item">
+          <h4 id="faq-q5">2026 Ramazan ayı İstanbul’da kaç gün sürecek?</h4>
+          <p id="faq-a5">2026 Ramazan ayı 29 veya 30 gün sürecektir. Süre, ayın bitişinin hilal gözlemine göre
+            belirlenmesine bağlıdır.</p>
+        </div>
+        <div class="faq-item">
+          <h4 id="faq-q6">2026 Ramazan tarihleri İstanbul için kesinleşti mi?</h4>
+          <p id="faq-a6">Ramazan ayının başlangıç ve bitiş tarihleri, resmi dini kurumların açıklamalarından sonra
+            kesinleşir. İmsakiye bu açıklamalara göre güncellenmektedir.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script>
@@ -395,6 +454,9 @@
         document.title = title;
         document.querySelector('meta[name="description"]').setAttribute("content", `${cityLabel} ${districtLabel} için 2026 yılı Ramazan imsakiyesi, iftar ve sahur vakitleri tablosu.`);
 
+        // Update FAQ Content dynamically
+        updateFAQ(cityLabel);
+
         // Update Schema.org
         updateSchema(cityLabel, districtLabel, city, district);
 
@@ -416,6 +478,37 @@
       } catch (err) {
         output.innerHTML = "<p>Veri yüklenemedi.</p>";
       }
+    }
+
+    function updateFAQ(cityLabel) {
+      const lastVowel = cityLabel.match(/[aıoueiöü][^aıoueiöü]*$/i)?.[0]?.[0]?.toLowerCase();
+      const suffix = (['a', 'ı', 'o', 'u'].includes(lastVowel)) ? 'da' : 'de';
+
+      const q1 = `2026 yılında ${cityLabel}’${suffix} Ramazan ne zaman başlıyor?`;
+      const a1 = `2026 yılında ${cityLabel}’${suffix} Ramazan ayının Perşembe, 19 Şubat 2026 tarihinde başlaması beklenmektedir. Kesin tarih, hilalin görülmesine göre resmi olarak açıklanacaktır.`;
+      const q2 = `2026 yılında ${cityLabel}’${suffix} ilk oruç günü ne zaman?`;
+      const a2 = `${cityLabel} için 2026 Ramazan ayının ilk oruç gününün Perşembe, 19 Şubat 2026 tarihinde olması öngörülmektedir.`;
+      const q3 = `2026 Ramazan ayında ${cityLabel}’${suffix} sahur saati kaçta?`;
+      const a3 = `${cityLabel}’${suffix} sahur saatleri Ramazan boyunca her gün değişmektedir ve imsak vaktine göre belirlenir. Günlük sahur saatleri Ramazan imsakiyesinde yer almaktadır.`;
+      const q4 = `2026 Ramazan ayında ${cityLabel}’${suffix} iftar saati kaçta?`;
+      const a4 = `İftar saati ${cityLabel}’${suffix} güneşin batışına göre belirlenir ve Ramazan ayı boyunca günlük olarak değişir. Güncel iftar saatleri imsakiyede gösterilmektedir.`;
+      const q5 = `2026 Ramazan ayı ${cityLabel}’${suffix} kaç gün sürecek?`;
+      const a5 = `2026 Ramazan ayı 29 veya 30 gün sürecektir. Süre, ayın bitişinin hilal gözlemine göre belirlenmesine bağlıdır.`;
+      const q6 = `2026 Ramazan tarihleri ${cityLabel} için kesinleşti mi?`;
+      const a6 = `Ramazan ayının başlangıç ve bitiş tarihleri, resmi dini kurumların açıklamalarından sonra kesinleşir. İmsakiye bu açıklamalara göre güncellenmektedir.`;
+
+      document.getElementById('faq-q1').innerText = q1;
+      document.getElementById('faq-a1').innerText = a1;
+      document.getElementById('faq-q2').innerText = q2;
+      document.getElementById('faq-a2').innerText = a2;
+      document.getElementById('faq-q3').innerText = q3;
+      document.getElementById('faq-a3').innerText = a3;
+      document.getElementById('faq-q4').innerText = q4;
+      document.getElementById('faq-a4').innerText = a4;
+      document.getElementById('faq-q5').innerText = q5;
+      document.getElementById('faq-a5').innerText = a5;
+      document.getElementById('faq-q6').innerText = q6;
+      document.getElementById('faq-a6').innerText = a6;
     }
 
     function updateSchema(cityLabel, districtLabel, city, district) {
@@ -476,6 +569,60 @@
                 "position": 3,
                 "name": districtLabel,
                 "item": `https://recepuncu.github.io/imsakiye/?city=${city}&district=${district}`
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "license": "https://opensource.org/licenses/MIT",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": document.getElementById('faq-q1').innerText,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": document.getElementById('faq-a1').innerText
+                }
+              },
+              {
+                "@type": "Question",
+                "name": document.getElementById('faq-q2').innerText,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": document.getElementById('faq-a2').innerText
+                }
+              },
+              {
+                "@type": "Question",
+                "name": document.getElementById('faq-q3').innerText,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": document.getElementById('faq-a3').innerText
+                }
+              },
+              {
+                "@type": "Question",
+                "name": document.getElementById('faq-q4').innerText,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": document.getElementById('faq-a4').innerText
+                }
+              },
+              {
+                "@type": "Question",
+                "name": document.getElementById('faq-q5').innerText,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": document.getElementById('faq-a5').innerText
+                }
+              },
+              {
+                "@type": "Question",
+                "name": document.getElementById('faq-q6').innerText,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": document.getElementById('faq-a6').innerText
+                }
               }
             ]
           }
